@@ -1,0 +1,20 @@
+{
+    "date_time":{
+        "patient_list":{
+            "format":""
+        },
+        "patient_information":{
+            "format":"YYYY-MM-DD"
+        },
+        "events": {
+            "zone": "America/New_York",
+            "text": "Time (North American Eastern Standard Time)",
+            "format":"",
+            "DEFAULT_DATE_FORMAT":"dd MMM yyyy",
+            "DEFAULT_TIME_FORMAT":"hh:mm a"
+        }
+    },
+    "note":{
+      "content":"Note: This is a trial version. Any changes saved to the data or predictions are permanent for all users."
+    }
+  }

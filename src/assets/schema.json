@@ -1,0 +1,262 @@
+[
+  {
+    "renderStyle": "panel",
+    "title": "Patient",
+    "order": 1,
+    "isCollapsed": true,
+    "fields": [
+      {
+        "type": "string",
+        "label": "MRN",
+        "key": "mrn",
+        "order": 1,
+        "isReadonly": false,
+        "isRequired": true,
+        "maxlength": 30,
+        "remoteValidate": true,
+        "validateURL": "/patient/patientMrn"
+      },
+      {
+        "type": "dropdown",
+        "label": "Indication",
+        "key": "indication",
+        "order": 2,
+        "items": [
+          {
+            "text": "MRSA Pneumonia",
+            "value": "MRSA Pneumonia"
+          },
+          {
+            "text": "Osteomyletis",
+            "value": "Osteomyletis"
+          },
+          {
+            "text": "Skin and Soft Tissue Infection",
+            "value": "Skin and Soft Tissue Infection"
+          },
+          {
+            "text": "CNS Meningitis",
+            "value": "CNS Meningitis"
+          },
+          {
+            "text": "Sepsis",
+            "value": "Sepsis"
+          },
+          {
+            "text": "Septic Shock",
+            "value": "Septic Shock"
+          },
+          {
+            "text": "Bacteremia",
+            "value": "Bacteremia"
+          },
+          {
+            "text": "Community Acquired Pneumonia/ Hospital Acquired Pneumonia",
+            "value": "Community Acquired Pneumonia/ Hospital Acquired Pneumonia"
+          },
+          {
+            "text": "Surgical Prophylaxis",
+            "value": "Surgical Prophylaxis"
+          }
+        ],
+        "isReadonly": false,
+        "isRequired": true
+      }
+    ]
+  },
+  {
+    "renderStyle": "card",
+    "title": "Patient information",
+    "order": 2,
+    "isCollapsed": false,
+    "fields": [
+      {
+        "type": "date",
+        "label": "Date of Birth (YYYY-MM-DD)",
+        "key": "birthday",
+        "order": 1,
+        "isReadonly": false,
+        "isRequired": true
+      },
+      {
+        "type": "number",
+        "label": "Age",
+        "order": 2,
+        "key": "age",
+        "isReadonly": true
+      },
+      {
+        "type": "number",
+        "label": "PMA",
+        "unit": "weeks",
+        "key": "pma",
+        "order": 3,
+        "isReadonly": false,
+        "isRequired": true
+      },
+      {
+        "type": "dropdown",
+        "label": "Gender",
+        "items": [
+          {
+            "text": "Male",
+            "value": "male"
+          },
+          {
+            "text": "Female",
+            "value": "female"
+          }
+        ],
+        "key": "gender",
+        "order": 4,
+        "isReadonly": false,
+        "isRequired": true
+      },
+      {
+        "type": "number",
+        "label": "Height",
+        "unit": "cm",
+        "key": "height",
+        "order": 5,
+        "min": 1,
+        "max": 250,
+        "isReadonly": false,
+        "isRequired": true,
+        "validatorKey": "height",
+        "remoteValidate": true,
+        "validateURL": "/patient/validate"
+      },
+      {
+        "type": "number",
+        "label": "Weight",
+        "unit": "kg",
+        "key": "weight",
+        "order": 6,
+        "min": 1,
+        "max": 1000,
+        "isReadonly": false,
+        "isRequired": true,
+        "validatorKey": "weight",
+        "remoteValidate": true,
+        "validateURL": "/patient/validate"
+      },
+      {
+        "type": "number",
+        "label": "SCr",
+        "unit": "mg/dL",
+        "key": "scr",
+        "order": 7,
+        "isReadonly": false,
+        "isRequired": true,
+        "validatorKey": "scr",
+        "remoteValidate": true,
+        "validateURL": "/patient/validate"
+      },
+      {
+        "type": "number",
+        "label": "Daily AUC Target",
+        "unit": "mg·hour/L ",
+        "key": "dailyAucTarget",
+        "order": 8,
+        "isRequired": true,
+        "validatorKey": "auc",
+        "remoteValidate": true,
+        "validateURL": "/patient/validate"
+      },
+      {
+        "type": "number",
+        "label": "eGFR",
+        "unit": "mL/min",
+        "key": "egfr",
+        "order": 9,
+        "isReadonly": true
+      },
+      {
+        "type": "dropdown",
+        "items": [
+          {
+            "text": 6,
+            "value": 6
+          },
+          {
+            "text": 8,
+            "value": 8
+          },
+          {
+            "text": 12,
+            "value": 12
+          },
+          {
+            "text": 18,
+            "value": 18
+          },
+          {
+            "text": 24,
+            "value": 24
+          },
+          {
+            "text": 36,
+            "value": 36
+          },
+          {
+            "text": 48,
+            "value": 48
+          }
+        ],
+        "label": "Dosing Interval",
+        "unit": "hours",
+        "key": "interval",
+        "order": 10,
+        "isReadonly": false,
+        "isRequired": true
+      },
+      {
+        "type": "dropdown",
+        "items": [
+          {
+            "text": 30,
+            "value": 30
+          },
+          {
+            "text": 60,
+            "value": 60
+          },
+          {
+            "text": 90,
+            "value": 90
+          },
+          {
+            "text": 120,
+            "value": 120
+          },
+          {
+            "text": 180,
+            "value": 180
+          }
+        ],
+        "label": "Infusion Duration",
+        "unit": "minutes",
+        "key": "duration",
+        "order": 11,
+        "isReadonly": false,
+        "isRequired": true
+      },
+      {
+        "type": "number",
+        "label": "FFM",
+        "unit": "kg",
+        "key": "ffm",
+        "order": 12,
+        "isReadonly": true
+      },
+      {
+        "type": "number",
+        "label": "BMI",
+        "unit": "kg/m²",
+        "key": "bmi",
+        "order": 13,
+        "isReadonly": true
+      }
+    ]
+  }
+]
