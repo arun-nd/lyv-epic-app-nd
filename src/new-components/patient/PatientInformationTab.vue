@@ -59,22 +59,23 @@ export default {
   },
 
   created() {
-    const { treatment } = this.$route.params;
-    this.fetchSchema(treatment);
+    const { drugname } = this.$route.params;
+    this.fetchSchema(drugname);
   },
 
   methods: {
-    async fetchSchema(treatment) {
+    async fetchSchema() {
       try {
-        const resp = await new Http({ auth: true }).get(
-          `patient/getSchema/${treatment}`
+        const resp = await new Http({ auth: false }).get(
+          "patient/patientDrugschema/vancomycin"
         );
-        if(resp.data){
-          if(resp.data.fieldParameters.length > 0){
+        if (resp.data) {
+          if (resp.data.fieldParameters.length > 0) {
             this.schema = resp.data.fieldParameters;
-          } else{
+            console.log(this.schema);
+          } else {
             // this.$store.commit("snackbar/setSnack",`Drug name ${resp.data.name} not yet supported`);
-             this.$router.push({ name: "Condition" });
+            this.$router.push({ name: "Condition" });
           }
         }
       } catch (e) {
@@ -91,8 +92,8 @@ export default {
     },
     onValidated() {
       const isValid =
-      this.$refs.patientInformation.formValid &&
-      this.$refs.patientBasic.formValid;
+        this.$refs.patientInformation.formValid &&
+        this.$refs.patientBasic.formValid;
       this.$emit("valid", isValid);
     },
   },

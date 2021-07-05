@@ -9,7 +9,9 @@ import axios from "axios";
 // import router from '../router/index'
 // import store from '../store/index'
 const url =
-  process.env.NODE_ENV === "production" ? process.env.VUE_APP_API_URL : process.env.VUE_APP_API_URL;
+  process.env.NODE_ENV === "production"
+    ? process.env.VUE_APP_API_URL
+    : process.env.VUE_APP_API_URL;
 
 /**
  * Service helper class
@@ -43,7 +45,6 @@ export class Http {
        */
       // timeout: 20000,
     });
-    
   }
 
   // init() {
@@ -83,7 +84,7 @@ export class Http {
   //         store.commit("snackbar/setSnack","Please contact the administrator");
   //         return Promise.reject(error.response);
   //       }
-       
+
   //     }
   //   );
   //   return this.instance;

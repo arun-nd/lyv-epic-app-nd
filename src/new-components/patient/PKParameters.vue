@@ -67,13 +67,34 @@ export default {
 
   mounted() {
     const { treatment } = this.$route.params;
+    const { drugname } = this.$route.params;
     this.getTreatment(treatment);
+    this.getDrugname(drugname);
   },
 
   methods: {
     async getTreatment(treatment) {
       try {
         const resp = await Main.getTreatment(treatment);
+        this.treatmentName = get(resp, "data.name", "");
+      } catch (error) {
+        this.setSnack({
+          message: error.response.data.message,
+          color: "error",
+        });
+        // this.$store.commit("snackbar/setSnack", {
+        //   message: error.response.data.message,
+        //   color: "error",
+        // });
+        if (error.response.data.code === 404) {
+          this.$router.push({ name: "Login" });
+        }
+      }
+    },
+    //get drugname
+    async getDrugname(drugname) {
+      try {
+        const resp = await Main.getDrugname(drugname);
         this.treatmentName = get(resp, "data.name", "");
       } catch (error) {
         this.setSnack({

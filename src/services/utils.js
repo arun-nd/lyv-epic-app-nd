@@ -20,9 +20,10 @@ const url = {
   getAllTreatment: "treatment/all",
   getAllCondition: "condition/all",
   getTreatment: "treatment",
+  getDrugname: "drugname",
   // acceptedTermsAndCondition: "users/condition-accepted",
-  getCondition:"condition",
-  schema:"condition/modules/schema"
+  getCondition: "condition",
+  schema: "condition/modules/schema",
 };
 
 export default {

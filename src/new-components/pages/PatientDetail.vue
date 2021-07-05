@@ -180,11 +180,12 @@ export default {
   },
 
   mounted() {
-    const { condition, treatment, mrn } = this.$route.params;
+    const { condition, treatment,drugname, mrn } = this.$route.params;
     this.conditionId = condition;
     this.treatmentId = treatment;
     this.patient.treatmentId = treatment;
     this.getTreatment(treatment);
+    this.getDrugname(drugname);
     if (mrn) {
       this.isRecommended = true;
       this.setActiveTab(1);
@@ -241,6 +242,13 @@ export default {
   methods: {
     async getTreatment(treatment) {
       const resp = await Main.getTreatment(treatment);
+        console.log(resp);
+      this.drugName = get(resp, "data.name", "");
+    },
+    //Drugname 
+      async getDrugname(drugname) {
+      const resp = await Main.getDrugname(drugname);
+      console.log(resp);
       this.drugName = get(resp, "data.name", "");
     },
     onApplySuggestion() {

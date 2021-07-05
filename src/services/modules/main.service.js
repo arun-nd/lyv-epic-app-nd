@@ -52,7 +52,6 @@ export class Main {
       return Promise.reject(error);
     }
   }
-
   /**
    * get treatment data service method
    * @param {String} params
@@ -60,8 +59,23 @@ export class Main {
    */
   static async getTreatment(params) {
     try {
-      const response = await new Http({ auth: true }).get(
+      const response = await new Http({ auth: false }).get(
         `${utils.url.getTreatment}/${params}`
+      );
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  /**
+   * get drugname data service method
+   * @param {String} params
+   * @returns {Promise}
+   */
+  static async getDrugname(params) {
+    try {
+      const response = await new Http({ auth: false }).get(
+        `${utils.url.getDrugname}/${params}`
       );
       return response;
     } catch (error) {
@@ -141,7 +155,7 @@ export class Main {
    * @param {String} params
    * @returns {Promise}
    */
-   static async getCondition(params) {
+  static async getCondition(params) {
     try {
       const response = await new Http({ auth: true }).get(
         `${utils.url.getCondition}/${params}`
@@ -152,19 +166,19 @@ export class Main {
     }
   }
 
-    /**
+  /**
    * get  condition data service method
    * @param {String} params
    * @returns {Promise}
    */
-     static async loadSchema() {
-      try {
-        const response = await new Http({ auth: true }).get(
-          `${utils.url.schema}`
-        );
-        return response;
-      } catch (error) {
-        return Promise.reject(error);
-      }
+  static async loadSchema() {
+    try {
+      const response = await new Http({ auth: true }).get(
+        `${utils.url.schema}`
+      );
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
     }
+  }
 }
