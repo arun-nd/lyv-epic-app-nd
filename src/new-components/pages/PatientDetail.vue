@@ -25,7 +25,7 @@
           rounded
           small
           color="default"
-          :to="`/${conditionId}/treatments/${treatmentId}/patientList`"
+     
         >
           back
         </v-btn>
