@@ -66,10 +66,10 @@ export default {
   },
 
   mounted() {
-    const { treatment } = this.$route.params;
-    const { drugname } = this.$route.params;
-    this.getTreatment(treatment);
-    this.getDrugname(drugname);
+    // const { treatment } = this.$route.params;
+    // const { drugname } = this.$route.params;
+    // this.getTreatment(treatment);
+    // this.getDrugname(drugname);
   },
 
   methods: {

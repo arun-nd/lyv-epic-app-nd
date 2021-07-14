@@ -19,7 +19,7 @@
       <v-flex class="d-flex justify-end" lg5>
         <v-chip v-if="mrn">MRN: {{ mrn }}</v-chip>
       </v-flex>
-      <v-flex class="d-flex justify-end" lg1>
+      <!-- <v-flex class="d-flex justify-end" lg1>
         <v-btn
           outlined
           rounded
@@ -29,7 +29,7 @@
         >
           back
         </v-btn>
-      </v-flex>
+      </v-flex> -->
     </v-layout>
     <PatientInformationTab
       ref="patientInformationTab"
@@ -180,16 +180,18 @@ export default {
   },
 
   mounted() {
-    const { condition, treatment,drugname, mrn } = this.$route.params;
+    // drugname, mrn 
+    const { condition, treatment } = this.$route.params;
+     const { drugname, iss, launch} = this.$route.query;
     this.conditionId = condition;
     this.treatmentId = treatment;
     this.patient.treatmentId = treatment;
-    this.getTreatment(treatment);
-    this.getDrugname(drugname);
-    if (mrn) {
+    // this.getTreatment(treatment);
+    // this.getDrugname(drugname);
+    if (drugname && iss && launch) {
       this.isRecommended = true;
       this.setActiveTab(1);
-      this.getPatient(mrn);
+      this.getPatient(drugname, iss,launch);
     }
   },
 
@@ -242,7 +244,6 @@ export default {
   methods: {
     async getTreatment(treatment) {
       const resp = await Main.getTreatment(treatment);
-        console.log(resp);
       this.drugName = get(resp, "data.name", "");
     },
     //Drugname 
@@ -260,14 +261,15 @@ export default {
     setActiveTab(index) {
       this.activeTabIndex = index;
     },
-    async getPatient(mrn) {
+    async getPatient(drugname, iss,launch) {
       this.isLoading = true;
       try {
         const resp = await new Http({
-          auth: true,
-        }).post("/patient/getPatientDetails", {
-          mrn,
-          time: this.timelineActiveTime,
+          auth: false,
+        }).post("/patient/getPatientDetailsAndRecommendedDosage", {
+          drugname,
+          iss,
+          launch,
         });
         const patient = get(resp, "data.0", {});
         const patientTime = new Date(patient.time).valueOf();
@@ -281,9 +283,9 @@ export default {
           schedule: patient.treatmentParameters.schedule,
           successMetrics: patient.treatmentParameters.successMetrics,
           suggestedSuccessMetrics:
-            patient.treatmentParameters.suggestedSuccessMetrics,
+          patient.treatmentParameters.suggestedSuccessMetrics,
           suggested_dosedetails:
-            patient.treatmentParameters.suggested_dosedetails,
+          patient.treatmentParameters.suggested_dosedetails,
           time: patientTime,
         };
         this.timelineActiveTime = patientTime;

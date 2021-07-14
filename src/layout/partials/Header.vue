@@ -14,16 +14,16 @@
 
       <v-toolbar-title> Lyv<sup>®</sup> CDS</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="routeTo('Condition')" id="home" name="home">
+      <!-- <v-btn icon @click="routeTo('Condition')" id="home" name="home">
         <v-icon>mdi-home</v-icon>
-      </v-btn>
-      <v-menu left bottom>
+      </v-btn> -->
+      <!-- <v-menu left bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on" id="dots" name="dots">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>
-        <v-list>
+        <v-list> -->
           <!-- <v-list-item>
             <v-list-item-title @click="routeTo('Profile')" class="cp"
               >Profile</v-list-item-title
@@ -33,8 +33,8 @@
           <!-- <v-list-item>
             <v-list-item-title>User Profile</v-list-item-title>
           </v-list-item> -->
-        </v-list>
-      </v-menu>
+        <!-- </v-list>
+      </v-menu> -->
     </v-app-bar>
    
   </div>
